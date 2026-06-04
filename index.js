@@ -76,7 +76,8 @@ function handleEvent(event) {
     switch (userText) {
       case '地址':
         replyMessage = [
-          { type: 'text', text: '我們在這裡！\n南投縣竹山鎮延平新村1-20號',
+          { type: 'text', 
+            text: '我們在這裡！\n南投縣竹山鎮延平新村1-20號',
             type: 'location',
             title: '璞園藝術坊',
             address: '南投縣竹山鎮延平新村1-20號',
