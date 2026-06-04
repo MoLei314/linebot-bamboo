@@ -53,11 +53,11 @@ function handleEvent(event) {
         type: 'action',
         action: { type: 'message', label: '📞聯絡電話', text: '聯絡電話' }
       },
-      /*{
-        type: 'action',
-        action: { type: 'message', label: '🍧菜單', text: '菜單' }
-      },
       {
+        type: 'action',
+        action: { type: 'message', label: '快速回覆', text: '更多回覆' }
+      },
+      /*{
         type: 'action',
         action: { type: 'message', label: '⭐限定', text: '限定品項' }
       },
@@ -73,7 +73,7 @@ function handleEvent(event) {
   // ==========================================
   //情境 1：使用者剛加入好友 (或解除封鎖)
   // ==========================================
-  if (event.type === 'follow') {
+  /*if (event.type === 'follow') {
     const replyMessage = {
       type: 'text',
       text: '你好！歡迎來到璞園藝術坊 🎉\n請點選下方的按鈕，或輸入關鍵字來獲取更多資訊喔！',
@@ -86,7 +86,7 @@ function handleEvent(event) {
   }
   // 使用 reply API 回傳
   return client.replyMessage(event.replyToken, replyMessage);
-  }
+  }*/
   // ==========================================
   // 情境 2：處理正常的文字訊息
   // ==========================================
@@ -126,12 +126,18 @@ function handleEvent(event) {
         text: '營業時間如上，歡迎來店參訪！'
       };
       break;
-    default:
-      // 如果不是上述關鍵字，做原本的 Echo 功能 (複誦使用者說的話)
+    case '更多回覆':
       replyMessage = {
         type: 'text',
         text: '你好！歡迎來到璞園藝術坊，請點選下方的快速回覆按鈕以獲取更多資訊！'
       };
+      break;
+    default:
+      // 如果不是上述關鍵字，做原本的 Echo 功能 (複誦使用者說的話)
+      /*replyMessage = {
+        type: 'text',
+        text: '你好！歡迎來到璞園藝術坊，請點選下方的快速回覆按鈕以獲取更多資訊！'
+      };*/
       break;
   }
   // 將 Quick Reply 附加到要回傳的訊息物件中
