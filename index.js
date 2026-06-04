@@ -79,7 +79,13 @@ function handleEvent(event) {
       text: '你好！歡迎來到璞園藝術坊 🎉\n請點選下方的按鈕，或輸入關鍵字來獲取更多資訊喔！',
       quickReply: quickReplyItems
     };
-    return client.replyMessage(event.replyToken, replyMessage);
+    if (Array.isArray(replyMessage)) {
+    replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
+  } else {
+    replyMessage.quickReply = quickReplyItems;
+  }
+  // 使用 reply API 回傳
+  return client.replyMessage(event.replyToken, replyMessage);
   }
   // ==========================================
   // 情境 2：處理正常的文字訊息
