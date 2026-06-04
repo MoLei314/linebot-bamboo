@@ -73,20 +73,29 @@ function handleEvent(event) {
   // ==========================================
   //情境 1：使用者剛加入好友 (或解除封鎖)
   // ==========================================
-  /*if (event.type === 'follow') {
-    const replyMessage = {
-      type: 'text',
-      text: '你好！歡迎來到璞園藝術坊 🎉\n請點選下方的按鈕，或輸入關鍵字來獲取更多資訊喔！',
-      quickReply: quickReplyItems
-    };
-    if (Array.isArray(replyMessage)) {
-    replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
-  } else {
-    replyMessage.quickReply = quickReplyItems;
+ if (event.type === 'follow') {
+    // 建立一個 Promise 來讓系統等待
+    return new Promise((resolve) => {
+      
+      // setTimeout 控制延遲時間：2000 毫秒 = 2 秒
+      setTimeout(() => {
+        const replyMessage = {
+          type: 'text',
+          text: '👇 請點擊下方選單獲取更多資訊', 
+          quickReply: quickReplyItems
+        };
+        
+        // 2 秒後呼叫 LINE API 傳送按鈕
+        client.replyMessage(event.replyToken, replyMessage)
+          .then(() => resolve(null))
+          .catch((err) => {
+            console.error('延遲傳送發生錯誤:', err);
+            resolve(null);
+          });
+          
+      }, 2000); // 你可以在這裡調整秒數，3000 就是 3 秒
+    });
   }
-  // 使用 reply API 回傳
-  return client.replyMessage(event.replyToken, replyMessage);
-  }*/
   // ==========================================
   // 情境 2：處理正常的文字訊息
   // ==========================================
