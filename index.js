@@ -34,6 +34,29 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
+  if (event.type === 'follow') {
+    // 建立一個 Promise 來讓系統等待
+    return new Promise((resolve) => {
+      
+      // setTimeout 控制延遲時間：2000 毫秒 = 2 秒
+      setTimeout(() => {
+        const replyMessage = {
+          type: 'text',
+          text: '👇 請點擊下方選單獲取更多資訊500', 
+          quickReply: quickReplyItems
+        };
+        
+        // 2 秒後呼叫 LINE API 傳送按鈕
+        client.replyMessage(event.replyToken, replyMessage)
+          .then(() => resolve(null))
+          .catch((err) => {
+            console.error('延遲傳送發生錯誤:', err);
+            resolve(null);
+          });
+          
+      }, 500); // 你可以在這裡調整秒數，3000 就是 3 秒
+    });
+  }
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
@@ -73,30 +96,7 @@ function handleEvent(event) {
   // ==========================================
   //情境 1：使用者剛加入好友 (或解除封鎖)
   // ==========================================
-  if (event.type === 'follow') {
-    // 建立一個 Promise 來讓系統等待
-    return new Promise((resolve) => {
-      
-      // setTimeout 控制延遲時間：2000 毫秒 = 2 秒
-      setTimeout(() => {
-        const replyMessage = {
-          type: 'text',
-          text: '👇 請點擊下方選單獲取更多資訊', 
-          quickReply: quickReplyItems
-        };
-        
-        // 2 秒後呼叫 LINE API 傳送按鈕
-        client.replyMessage(event.replyToken, replyMessage)
-          .then(() => resolve(null))
-          .catch((err) => {
-            console.error('延遲傳送發生錯誤:', err);
-            resolve(null);
-          });
-          
-      }, 500); // 你可以在這裡調整秒數，3000 就是 3 秒
-    });
-  }
-  // ==========================================
+    // ==========================================
   // 情境 2：處理正常的文字訊息
   // ==========================================
   //if (event.type === 'message' && event.message.type === 'text') {
