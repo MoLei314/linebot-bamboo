@@ -56,7 +56,7 @@ function handleEvent(event) {
       setTimeout(() => {
         const replyMessage = {
           type: 'text',
-          text: '👇 請點擊下方選單獲取更多資訊', 
+          text: '👇 可以點擊下方按鈕或圖文選單以獲取更多資訊', 
           quickReply: quickReplyItems
         };
         
@@ -66,7 +66,7 @@ function handleEvent(event) {
             console.error('延遲傳送發生錯誤:', err.originalError.response.data || err.message);
             resolve(null);
           });
-      }, 2000); 
+      }, 1200); 
     });
   }
 
