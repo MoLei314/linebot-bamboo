@@ -102,7 +102,7 @@ function handleEvent(event) {
       case '更多資訊':
         replyMessage = {
           type: 'text',
-          text: '參考下方按鈕以獲得更詳盡的資訊！'
+          text: '參考下方按鈕以獲得更詳細的資訊！'
         };
         break;
       case '營業時間':
