@@ -105,10 +105,10 @@ function handleEvent(event) {
       break;
     default:
       // 如果不是上述關鍵字，做原本的 Echo 功能 (複誦使用者說的話)
-      //replyMessage = {
-        //type: 'text',
-        //text: event.message.text
-      //};
+      replyMessage = {
+        type: 'text',
+        text: '你好！歡迎來到璞園藝術坊，請點選下方的快速回覆按鈕以獲取更多資訊！'
+      };
       break;
   }
   // 將 Quick Reply 附加到要回傳的訊息物件中
