@@ -73,15 +73,23 @@ function handleEvent(event) {
   // 根據使用者的文字內容決定回覆訊息
   switch (userText) {
     case '地址':
-      replyMessage = {
-        text: '我們在這裡！',
-        type: 'location',
-        title: '璞園藝術坊',
-        address: '南投縣竹山鎮延平新村1-20號',
-        latitude: 23.765590,
-        longitude: 120.710719,
-        text: '歡迎來店參訪！'
-      };
+      replyMessage = [
+        {
+          type: 'text',
+          text: '我們在這裡！'
+        },
+        {
+          type: 'location',
+          title: '璞園藝術坊',
+          address: '南投縣竹山鎮延平新村1-20號',
+          latitude: 23.765590,
+          longitude: 120.710719
+        },
+        {
+          type: 'text',
+          text: '歡迎來店參訪！'
+        }
+      ];
       break;
     case '聯絡電話':
       replyMessage = {
@@ -104,7 +112,12 @@ function handleEvent(event) {
       break;
   }
   // 將 Quick Reply 附加到要回傳的訊息物件中
-  replyMessage.quickReply = quickReplyItems;
+  // 判斷 replyMessage 是陣列還是單一物件，將 Quick Reply 綁定在最後一則訊息
+  if (Array.isArray(replyMessage)) {
+    replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
+  } else {
+    replyMessage.quickReply = quickReplyItems;
+  }
   // 使用 reply API 回傳
   return client.replyMessage(event.replyToken, replyMessage);
 }
