@@ -33,9 +33,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 });
 
 // event handler
-// ==========================================
 // 核心事件處理器
-// ==========================================
 function handleEvent(event) {
   // 1. 必須「先」定義共用的 Quick Reply 按鈕，後面的程式碼才抓得到它！
   const quickReplyItems = {
@@ -100,13 +98,13 @@ function handleEvent(event) {
           type: 'text',
           text: '🍧 菜單請參考上圖'
         };
-        break;
-      case '限定品項':
+        break;*/
+      case '更多資訊':
         replyMessage = {
           type: 'text',
-          text: '限定品項請參考上圖'
+          text: '參考下方按鈕以獲得更詳盡的資訊！'
         };
-        break;*/
+        break;
       case '營業時間':
         replyMessage = {
           type: 'text',
