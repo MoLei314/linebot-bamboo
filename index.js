@@ -68,6 +68,8 @@ function handleEvent(event) {
     ]
   };
 
+  const userText = event.message.text;
+  let replyMessage = {};
   // ==========================================
   //情境 1：使用者剛加入好友 (或解除封鎖)
   // ==========================================
@@ -83,8 +85,7 @@ function handleEvent(event) {
   // 情境 2：處理正常的文字訊息
   // ==========================================
   //if (event.type === 'message' && event.message.type === 'text') {
-  const userText = event.message.text;
-  let replyMessage = {};
+
 
   // 根據使用者的文字內容決定回覆訊息
   switch (userText) {
