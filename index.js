@@ -69,16 +69,16 @@ function handleEvent(event) {
   };
 
   // ==========================================
-  // 情境 1：使用者剛加入好友 (或解除封鎖)
+  //情境 1：使用者剛加入好友 (或解除封鎖)
   // ==========================================
-  /*if (event.type === 'follow') {
+  if (event.type === 'follow') {
     const replyMessage = {
       type: 'text',
       text: '你好！歡迎來到璞園藝術坊 🎉\n請點選下方的按鈕，或輸入關鍵字來獲取更多資訊喔！',
       quickReply: quickReplyItems
     };
     return client.replyMessage(event.replyToken, replyMessage);
-  }*/
+  }
   // ==========================================
   // 情境 2：處理正常的文字訊息
   // ==========================================
@@ -127,7 +127,6 @@ function handleEvent(event) {
       };
       break;
   }
-  }
   // 將 Quick Reply 附加到要回傳的訊息物件中
   // 判斷 replyMessage 是陣列還是單一物件，將 Quick Reply 綁定在最後一則訊息
   if (Array.isArray(replyMessage)) {
@@ -137,7 +136,7 @@ function handleEvent(event) {
   }
   // 使用 reply API 回傳
   return client.replyMessage(event.replyToken, replyMessage);
-//}
+}
 
 // listen on port
 const port = process.env.PORT || 3000;
