@@ -53,7 +53,7 @@ function handleEvent(event) {
         type: 'action',
         action: { type: 'message', label: '📞聯絡電話', text: '聯絡電話' }
       },
-      {
+      /*{
         type: 'action',
         action: { type: 'message', label: '🍧菜單', text: '菜單' }
       },
@@ -64,7 +64,7 @@ function handleEvent(event) {
       {
         type: 'action',
         action: { type: 'message', label: '招牌介紹', text: '招牌介紹' }
-      }
+      }*/
     ]
   };
   const userText = event.message.text;
