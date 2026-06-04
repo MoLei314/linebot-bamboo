@@ -53,11 +53,11 @@ function handleEvent(event) {
         type: 'action',
         action: { type: 'message', label: '📞聯絡電話', text: '聯絡電話' }
       },
-      {
+      /*{
         type: 'action',
         action: { type: 'message', label: '快速回覆', text: '更多回覆' }
       },
-      /*{
+      {
         type: 'action',
         action: { type: 'message', label: '⭐限定', text: '限定品項' }
       },
