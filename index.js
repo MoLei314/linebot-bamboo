@@ -74,11 +74,13 @@ function handleEvent(event) {
   switch (userText) {
     case '地址':
       replyMessage = {
+        text: '我們在這裡！',
         type: 'location',
         title: '璞園藝術坊',
         address: '南投縣竹山鎮延平新村1-20號',
         latitude: 23.765590,
-        longitude: 120.710719
+        longitude: 120.710719,
+        text: '歡迎來店參訪！'
       };
       break;
     case '聯絡電話':
@@ -90,7 +92,7 @@ function handleEvent(event) {
     case '營業時間':
       replyMessage = {
         type: 'text',
-        text: '營業時間如下'
+        text: '營業時間如上，歡迎來店參訪！'
       };
       break;
     default:
