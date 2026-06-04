@@ -187,9 +187,6 @@ function handleEvent(event) {
 // listen on port
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`listening on ${port}`);
-  const port = process.env.PORT || 3000;
-app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 
   // 3. Render 防休眠機制 (Keep-Alive)
@@ -208,5 +205,4 @@ app.listen(port, () => {
     }, 14 * 60 * 1000); 
   }
   });
-});
 
