@@ -1,0 +1,15 @@
+{
+  "name": "echo-bot",
+  "version": "0.0.0",
+  "description": "An example LINE bot just to echo messages written in CommonJS",
+  "main": "index.js",
+  "scripts": {
+    "build-sdk": "cd ../../; npm i; npm run build",
+    "start": "node ."
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^10.4.0",
+    "axios": "^1.13.2",
+    "express": "^4.17.3"
+  }
+}
