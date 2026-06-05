@@ -41,8 +41,8 @@ function handleEvent(event) {
       { type: 'action', action: { type: 'message', label: '📍地址', text: '地址' } },
       { type: 'action', action: { type: 'message', label: '⏰營業時間', text: '營業時間' } },
       { type: 'action', action: { type: 'message', label: '📞聯絡電話', text: '聯絡電話' } },
-      /*{ type: 'action', action: { type: 'message', label: '🍧菜單', text: '菜單' } },
-      { type: 'action', action: { type: 'message', label: '⭐限定', text: '限定品項' } },
+      { type: 'action', action: { type: 'message', label: '🎋如何客製化產品？', text: '如何客製化產品？' } },
+      /*{ type: 'action', action: { type: 'message', label: '⭐限定', text: '限定品項' } },
       { type: 'action', action: { type: 'message', label: '招牌介紹', text: '招牌介紹' } }*/
     ]
   };
@@ -108,6 +108,12 @@ function handleEvent(event) {
         replyMessage = {
           type: 'text',
           text: '營業時間如上所示，歡迎在營業時間內參訪！'
+        };
+        break;
+      case '如何客製化產品':
+        replyMessage = {
+          type: 'text',
+          text: '歡迎直接傳訊息至此官方帳號詢問\n將有負責人員與您聯絡，討論客製化產品的細節！'
         };
         break;
       /*case '招牌介紹':
