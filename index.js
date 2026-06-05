@@ -110,7 +110,7 @@ function handleEvent(event) {
           text: '營業時間如上所示，歡迎在營業時間內參訪！'
         };
         break;
-      case '如何客製化產品':
+      case '如何客製化產品？':
         replyMessage = {
           type: 'text',
           text: '歡迎直接傳訊息至此官方帳號詢問\n將有負責人員與您聯絡，討論客製化產品的細節！'
