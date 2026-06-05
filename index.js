@@ -89,7 +89,7 @@ function handleEvent(event) {
       case '聯絡電話':
         replyMessage = {
           type: 'text',
-          text: '連絡電話：049-2653205\n歡迎來電預約參觀！'
+          text: '市話：049-2653205\n手機：0911-987017\n歡迎來電預約參觀！'
         };
         break;
       /*case '菜單':
