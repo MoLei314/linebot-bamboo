@@ -83,13 +83,13 @@ function handleEvent(event) {
             latitude: 23.765590,
             longitude: 120.710719
           },
-          { type: 'text', text: '我們在這裡❕\n\n南投縣竹山鎮延平新村1-20號\n\n歡迎來店參訪❕' }
+          { type: 'text', text: '我們在這裡❗\n\n南投縣竹山鎮延平新村1-20號\n\n歡迎來店參訪❗' }
         ];
         break;
       case '聯絡電話':
         replyMessage = {
           type: 'text',
-          text: '市話：049-2653205\n手機：0911-987017\n歡迎來電預約參觀❕'
+          text: '市話：049-2653205\n手機：0911-987017\n歡迎來電預約參觀'
         };
         break;
       /*case '菜單':
@@ -101,19 +101,19 @@ function handleEvent(event) {
       case '更多資訊':
         replyMessage = {
           type: 'text',
-          text: '參考下方按鈕以獲得更詳細的資訊❕'
+          text: '參考下方按鈕以獲得更詳細的資訊❗'
         };
         break;
       case '營業時間':
         replyMessage = {
           type: 'text',
-          text: '營業時間如上所示，歡迎在營業時間內參訪❕'
+          text: '營業時間如上所示，歡迎在營業時間內參訪❗'
         };
         break;
       case '如何客製化產品？':
         replyMessage = {
           type: 'text',
-          text: '若有客製化產品需求\n歡迎直接傳訊息至此官方帳號詢問\n將有負責人員與您聯絡，討論客製化產品的細節🛠️\n什麼產品都能根據需求客製化❕'
+          text: '若有客製化產品需求\n歡迎直接傳訊息至此官方帳號詢問\n將有負責人員與您聯絡，討論客製化產品的細節🛠️\n什麼產品都能根據需求客製化❗'
         };
         break;
       /*case '招牌介紹':
