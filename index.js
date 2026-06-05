@@ -152,7 +152,11 @@ function handleEvent(event) {
         };
         break;*/
     }
-
+    // 🛡️ 新增安全防護機制：如果 replyMessage 是空的（undefined），就直接終止，避免報錯
+    if (!replyMessage) {
+      return Promise.resolve(null);
+    }
+    
     if (Array.isArray(replyMessage)) {
       replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
     } else {
