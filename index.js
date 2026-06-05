@@ -107,7 +107,7 @@ function handleEvent(event) {
       case '營業時間':
         replyMessage = {
           type: 'text',
-          text: '歡迎在營業時間內參訪❗'
+          text: '歡迎在營業時間內參訪或提前預約❗'
         };
         break;
       case '如何客製化產品？':
