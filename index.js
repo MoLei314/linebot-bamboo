@@ -69,14 +69,16 @@ function handleEvent(event) {
   }
 
   // 3. 情境：處理正常的文字訊息
+// 3. 情境：處理正常的文字訊息
   if (event.type === 'message' && event.message.type === 'text') {
     const userText = event.message.text;
     let replyMessage;
+    let delayTime = 0; // 🌟 新增：預設不延遲 (0 毫秒)
 
     switch (userText) {
       case '地址':
         replyMessage = [
-          { 
+          {
             type: 'location',
             title: '璞園藝術坊',
             address: '南投縣竹山鎮延平新村1-20號',
@@ -92,78 +94,46 @@ function handleEvent(event) {
           text: '市話：049-2653205\n手機：0911-987017\n歡迎來電預約參觀'
         };
         break;
-      /*case '菜單':
-        replyMessage = {
-          type: 'text',
-          text: '🍧 菜單請參考上圖'
-        };
-        break;*/
       case '更多資訊':
         replyMessage = {
           type: 'text',
           text: '參考下方按鈕以獲得更詳細的資訊❗'
         };
         break;
+      
+      // ==========================================
+      // 需要延遲的特例區塊
+      // ==========================================
       case '營業時間':
         replyMessage = {
           type: 'text',
-          text: '歡迎在營業時間內參訪或提前預約❗'
+          text: '👇 可以點擊下方按鈕以獲取更多資訊' // 這裡改為簡單的引導文字即可
         };
-        delayTime = 1200;
+        delayTime = 1200; // 🌟 設定專屬的延遲時間：1.2 秒
         break;
+      // ==========================================
+
       case '如何客製化產品？':
         replyMessage = {
           type: 'text',
           text: '若有客製化產品需求\n歡迎直接傳訊息至此官方帳號詢問\n將有負責人員與您聯絡，討論客製化產品的細節🛠️\n什麼產品都能根據需求客製化❗'
         };
         break;
-      /*case '招牌介紹':
-        replyMessage = {
-          type: 'template',
-          altText: '本季限定品項推薦 (請在手機上查看)',
-          template: {
-            type: 'carousel',
-            columns: [
-              {
-                thumbnailImageUrl: 'https://scontent.cdninstagram.com/v/t39.30808-6/594832321_1367900191800243_2775791771811882756_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=Mzc4MTYwNDYyMTQyNTY5NjQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE2Mzl4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=D_maq4b0BgUQ7kNvwEt8kij&_nc_oc=AdmqAZ97y69ceiECphlCvvxVfURys9hMkLKwEy4vZUbgIKsjOdZIRVEFNh1bNnONgyw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=Djs69YMcSH9gzVGqOEI_IA&oh=00_AfkpOoBs6jLQlVHVFn6amBl5lf1ffaKmbXpoSojwk9GTfw&oe=6945DB68',
-                title: '綜合紫米粥',
-                text: '暖心甜品，冬季首選',
-                actions: [
-                  { type: 'uri', label: 'IG 貼文', uri: 'https://www.instagram.com/p/DR69V4NDd6Q/' },
-                  { type: 'uri', label: 'FB 粉專', uri: 'https://www.facebook.com/share/p/1FZzNAWhdd/' }
-                ]
-              },
-              {
-                thumbnailImageUrl: 'https://scontent.cdninstagram.com/v/t39.30808-6/586531028_1358221596101436_9187067188093452106_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzc3MjAxOTkzOTU1ODE2NTA0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE2Mzl4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=E8U0yUgWhjQQ7kNvwEsOHNW&_nc_oc=AdkAxHO17qfRyg2OWOSh7vOPRCdIGcRfSOZote4eH1Q8tBNBgCHvPK0Pq43_vIlveNM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=Djs69YMcSH9gzVGqOEI_IA&oh=00_Afn4MW5WlQBpSG6NR6HxAOlIBjnW9Sxzj3XX3_SH8kopqA&oe=6945E234',
-                title: '奶霜抹茶雪花冰',
-                text: '濃郁抹茶搭配綿密奶霜',
-                actions: [
-                  { type: 'uri', label: 'IG 貼文', uri: 'https://www.instagram.com/p/DRY6CZnDgo0/' },
-                  { type: 'uri', label: 'FB 粉專', uri: 'https://www.facebook.com/share/p/16qeEKz3am/' }
-                ]
-              }
-            ]
-          }
-        };
-        break;
-      default:
-        replyMessage = {
-          type: 'text',
-          text: '目前還聽不懂這個指令喔 😅\n可以試著點選下方按鈕，或輸入「菜單」、「地址」等關鍵字！'
-        };
-        break;*/
     }
-    // 🛡️ 新增安全防護機制：如果 replyMessage 是空的（undefined），就直接終止，避免報錯
+
+    // 🛡️ 安全防護機制
     if (!replyMessage) {
       return Promise.resolve(null);
     }
-    
+
+    // 統一將 Quick Reply 附加到最後一則訊息
     if (Array.isArray(replyMessage)) {
       replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
     } else {
       replyMessage.quickReply = quickReplyItems;
     }
 
+    // 🌟 最後的發送階段：判斷是否需要延遲
     if (delayTime > 0) {
       // 如果 delayTime 大於 0，就包裝成 Promise 等待
       return new Promise((resolve) => {
@@ -181,8 +151,6 @@ function handleEvent(event) {
       return client.replyMessage(event.replyToken, replyMessage);
     }
   }
-
-  //return Promise.resolve(null);
 }
 
 // listen on port
