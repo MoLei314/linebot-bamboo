@@ -110,6 +110,12 @@ function handleEvent(event) {
             type: 'text',
             text: '歡迎在營業時間內參訪或提前預約❗'
           };
+          client.replyMessage(event.replyToken, replyMessage)
+          .then(() => resolve(null))
+          .catch((err) => {
+            console.error('延遲傳送發生錯誤:', err.originalError.response.data || err.message);
+            resolve(null);
+          });
         }, 1200);
         break;
       case '如何客製化產品？':
