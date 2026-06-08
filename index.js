@@ -54,17 +54,17 @@ function handleEvent(event) {
       setTimeout(() => {
         const replyMessage = {
           type: 'text',
-          text: '👇 可以點擊下方按鈕或圖文選單以獲取更多資訊',
+          text: '👇 可以點擊下方按鈕或圖文選單以獲取更多資訊', 
           quickReply: quickReplyItems
         };
-
+        
         client.replyMessage(event.replyToken, replyMessage)
           .then(() => resolve(null))
           .catch((err) => {
             console.error('延遲傳送發生錯誤:', err.originalError.response.data || err.message);
             resolve(null);
           });
-      }, 1200);
+      }, 1200); 
     });
   }
 
@@ -76,7 +76,7 @@ function handleEvent(event) {
     switch (userText) {
       case '地址':
         replyMessage = [
-          {
+          { 
             type: 'location',
             title: '璞園藝術坊',
             address: '南投縣竹山鎮延平新村1-20號',
@@ -105,18 +105,11 @@ function handleEvent(event) {
         };
         break;
       case '營業時間':
-        setTimeout(() => {
-          replyMessage = {
-            type: 'text',
-            text: '歡迎在營業時間內參訪或提前預約❗'
-          };
-          client.replyMessage(event.replyToken, replyMessage)
-          .then(() => resolve(null))
-          .catch((err) => {
-            console.error('延遲傳送發生錯誤:', err.originalError.response.data || err.message);
-            resolve(null);
-          });
-        }, 1200);
+        replyMessage = {
+          type: 'text',
+          text: '歡迎在營業時間內參訪或提前預約❗'
+        };
+        delayTime = 1200;
         break;
       case '如何客製化產品？':
         replyMessage = {
@@ -164,7 +157,7 @@ function handleEvent(event) {
     if (!replyMessage) {
       return Promise.resolve(null);
     }
-
+    
     if (Array.isArray(replyMessage)) {
       replyMessage[replyMessage.length - 1].quickReply = quickReplyItems;
     } else {
@@ -184,7 +177,7 @@ app.listen(port, () => {
 
   // 3. Render 防休眠機制 (Keep-Alive)
   // Render 在運行時會自動注入 RENDER_EXTERNAL_URL 環境變數
-  const selfUrl = process.env.RENDER_EXTERNAL_URL;
+  const selfUrl = process.env.RENDER_EXTERNAL_URL; 
   if (selfUrl) {
     console.log(`防休眠機制已啟動，監聽網址: ${selfUrl}`);
     // 設定每 14 分鐘 (14 * 60 * 1000 毫秒) 戳一次自己
@@ -195,7 +188,7 @@ app.listen(port, () => {
       } catch (error) {
         console.error('[Keep-Alive] 喚醒失敗:', error.message);
       }
-    }, 14 * 60 * 1000);
+    }, 14 * 60 * 1000); 
   }
-});
+  });
 
