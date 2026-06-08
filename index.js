@@ -182,7 +182,7 @@ function handleEvent(event) {
     }
   }
 
-  return Promise.resolve(null);
+  //return Promise.resolve(null);
 }
 
 // listen on port
