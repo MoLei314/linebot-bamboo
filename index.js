@@ -164,7 +164,22 @@ function handleEvent(event) {
       replyMessage.quickReply = quickReplyItems;
     }
 
-    return client.replyMessage(event.replyToken, replyMessage);
+    if (delayTime > 0) {
+      // 如果 delayTime 大於 0，就包裝成 Promise 等待
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          client.replyMessage(event.replyToken, replyMessage)
+            .then(() => resolve(null))
+            .catch((err) => {
+              console.error('文字訊息延遲傳送發生錯誤:', err);
+              resolve(null);
+            });
+        }, delayTime);
+      });
+    } else {
+      // 如果沒有設定延遲 (delayTime 為 0)，就直接秒回
+      return client.replyMessage(event.replyToken, replyMessage);
+    }
   }
 
   return Promise.resolve(null);
