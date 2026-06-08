@@ -107,7 +107,7 @@ function handleEvent(event) {
       case '營業時間':
         replyMessage = {
           type: 'text',
-          text: '👇 可以點擊下方按鈕以獲取更多資訊' // 這裡改為簡單的引導文字即可
+          text: '歡迎在營業時間內參訪或提前預約❗'
         };
         delayTime = 700; // 🌟 設定專屬的延遲時間：1.2 秒
         break;
